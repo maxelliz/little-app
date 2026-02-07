@@ -72,8 +72,14 @@ button:hover {
   transform: translateY(-3px);
 }
 
-#weather-info {
+.weather-info-hide {
   display: none;
+  margin-top: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.weather-info-show {
+  display: block;
   margin-top: 20px;
   animation: fadeIn 1s ease-in-out;
 }
