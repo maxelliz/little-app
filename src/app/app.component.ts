@@ -7,15 +7,5 @@ import {Component} from '@angular/core';
   standalone: false
 })
 export class AppComponent {
-  protected readonly question = 'Hello World'
 
-  //'Salut Giugiu, est-ce que ça te dit de passer la St-Valentin avec moi ?'
-
-  answerYes(): void {
-    console.log('YES');
-  }
-
-  answerNo(): void {
-    console.log('NO');
-  }
 }

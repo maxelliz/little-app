@@ -17,7 +17,7 @@ body {
   padding: 20px;
 }
 
-.weather-card {
+.question-card {
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   border: 2px solid #f44336;
@@ -29,56 +29,26 @@ body {
   animation: fadeIn 1s ease-in-out;
 }
 
-.weather-card:hover {
+.question-card:hover {
   transform: scale(1.05);
 }
 
-.weather-info-hide {
-  display: none;
-  margin-top: 20px;
-  animation: fadeIn 1s ease-in-out;
-}
-
-.weather-info-show {
-  display: block;
-  margin-top: 20px;
-  animation: fadeIn 1s ease-in-out;
-}
-
-#weather-icon {
-  width: 100px;
-  height: 100px;
-}
-
-#temperature {
-  font-size: 26px;
-  font-weight: bold;
-  color: #333;
-  margin: 8px 0;
-}
-
-#description {
-  font-size: 20px;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-#wind-speed,
-#humidity {
+button {
+  padding: 12px 20px;
+  margin-top: 10px;
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   font-size: 16px;
-  color: #555;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.loading {
-  font-size: 18px;
-  color: #2196F3;
-  margin-top: 20px;
-}
-
-.error-message {
-  font-size: 18px;
-  color: #f44336;
-  margin-top: 20px;
+button:hover {
+  background-color: #1565C0;
+  transform: translateY(-3px);
 }
 
 @keyframes fadeIn {
@@ -94,21 +64,12 @@ body {
 }
 
 @media (max-width: 600px) {
-  .weather-card {
+  .question-card {
     padding: 20px;
     width: 90%;
   }
 
-  #temperature {
-    font-size: 22px;
-  }
-
-  #description {
-    font-size: 18px;
-  }
-
-  #wind-speed,
-  #humidity {
+  button {
     font-size: 14px;
   }
 }
