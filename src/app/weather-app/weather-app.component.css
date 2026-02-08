@@ -1,20 +1,9 @@
-body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to right, #4CAF50, #2196F3);
-}
-
 .container {
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+  padding: 10px;
 }
 
 .weather-card {
