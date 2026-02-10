@@ -1,7 +1,15 @@
 <div class="container">
-  <div class="question-card">
-    <h1>{{ question }}</h1>
-    <button class="yes-button" (click)="answerYes()">Oui</button>
-    <button class="no-button" (click)="answerNo()">Non</button>
+  <div class="question-card-frame">
+    <div class="question-card">
+      <h1>{{ question }}</h1>
+      <button [style.width.px]="yesButtonWidth" [style.height.px]="yesButtonHeight"
+              [style.font-size.px]="yesButtonFontSize" class="yes-button"
+              (click)="biggerYesButton()">Oui
+      </button>
+      <button [style.left.px]="noButtonLeft" [style.top.px]="noButtonTop" class="no-button"
+              (mouseover)="moveNoButton()" (click)="moveNoButton()">
+        Non
+      </button>
+    </div>
   </div>
 </div>
