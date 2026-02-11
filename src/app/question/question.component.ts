@@ -59,9 +59,9 @@ export class QuestionComponent {
 
   getMinMaxTopLeft() {
     this.minX = -this.boxWidth / 2;
-    this.maxX = (this.boxWidth / 2) - 10 - this.noButtonWidth; //10px margin
-    this.minY = -this.boxHeight / 2;
-    this.maxY = (this.boxHeight / 2) - this.noButtonHeight; //10px margin
+    this.maxX = (this.boxWidth / 2) - 10 - this.noButtonWidth;
+    this.minY = -this.boxHeight / 2 - this.noButtonHeight;
+    this.maxY = (this.boxHeight / 2) - 5 - (2 * this.noButtonHeight);
   }
 
   moveNoButton(): void {
