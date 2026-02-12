@@ -1,0 +1,7 @@
+{
+  "name": "Little App",
+  "short_name": "Little App",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "landscape"
+}

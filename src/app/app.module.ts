@@ -1,4 +1,4 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -12,6 +12,7 @@ import {BadEndingComponent} from './bad-ending/bad-ending.component';
 import {AppRoutes} from './app.routes';
 import {HomeComponent} from './home/home.component';
 import {HappyEndingComponent} from './happy-ending/happy-ending.component';
+import {GlobalErrorHandler} from './global-error-handler.service';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -28,7 +29,8 @@ import {HappyEndingComponent} from './happy-ending/happy-ending.component';
     FormsModule,
     RouterModule,
     AppRoutes],
-  providers: [provideHttpClient(withInterceptorsFromDi())],
+  providers: [provideHttpClient(withInterceptorsFromDi()),
+    {provide: ErrorHandler, useClass: GlobalErrorHandler}],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {

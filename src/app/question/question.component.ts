@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -46,7 +46,7 @@ export class QuestionComponent {
   minY = 0;
   maxY = 0;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
@@ -157,6 +157,7 @@ export class QuestionComponent {
 
   randomNumberInRange(min: number, max: number): number {
     return Math.random() * (max - min) + min;
+    this.cdr.detectChanges();
   }
 
   addDynamicImages(maxNumber: number, tab: string[], image: string): void {
@@ -167,6 +168,7 @@ export class QuestionComponent {
 
   getRandomWidth(): number {
     return Math.floor(Math.random() * (this.emojiMaxSize - this.emojiMinSize)) + this.emojiMinSize;
+    this.cdr.detectChanges();
   }
 
 }

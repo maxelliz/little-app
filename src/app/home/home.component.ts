@@ -13,11 +13,11 @@ export class HomeComponent {
   isAfkPanelVisible: boolean = false;
   protected readonly afkTimer = 20;
 
-  constructor(private ngZone: NgZone, cd: ChangeDetectorRef) {
-    this.detectAfk(cd);
+  constructor(private ngZone: NgZone, cdr: ChangeDetectorRef) {
+    this.detectAfk(cdr);
   }
 
-  detectAfk(cd: ChangeDetectorRef) {
+  detectAfk(cdr: ChangeDetectorRef) {
     // Liste des événements considérés comme une activité
     const activity$ = merge(
       fromEvent(window, 'mousemove'),
@@ -35,7 +35,7 @@ export class HomeComponent {
       ).subscribe(() => {
         this.ngZone.run(() => {
           this.isAfkPanelVisible = true;
-          cd.detectChanges();
+          cdr.detectChanges();
         });
       });
     });
