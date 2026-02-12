@@ -17,7 +17,7 @@ export class WeatherAppComponent implements OnInit {
   loading: boolean = true;
   error: string = '';
 
-  private urlPosition = 'http://api.openweathermap.org/geo/1.0/reverse';
+  private urlPosition = 'https://api.openweathermap.org/geo/1.0/reverse';
   private urlWeather = 'https://api.openweathermap.org/data/2.5/weather';
   private apiKey = 'f00c38e0279b7bc85480c3fe775d518c';
 
