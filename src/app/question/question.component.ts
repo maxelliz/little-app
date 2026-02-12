@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app-question-app',
+  selector: 'question-component',
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.css'],
   standalone: false
@@ -9,29 +9,62 @@ import {Component} from '@angular/core';
 export class QuestionComponent {
 
   protected readonly question = 'Salut Giugiu, est-ce que ça te dit de passer la St-Valentin avec moi ?';
+
+  loveImages: string[] = [];
+  angryImages: string[] = [];
+  loveImageUrl = 'animated_heart.gif'
+  angryImageUrl = 'animated_angry.gif';
+  emojiMinSize = 25;
+  emojiMaxSize = 200;
+
+  screenWidth: any;
+  screenHeight: any;
+
   boxWidth: any;
   boxHeight: any;
+
   noButtonWidth = 0;
   noButtonHeight = 0;
   noButtonLeft = 0;
   noButtonTop = 0;
+  countMouseOverNoButton = 0;
+  maxCountMouseOverNoButton = 10;
+
+  yesButtonBigRate = 1.2;
   yesButtonWidth = 0;
   yesButtonHeight = 0;
   yesButtonFontSize = 16;
+  yesInitalButtonWidth = 0;
+  yesInitialButtonHeight = 0;
+  yesInitialButtonFontSize = 16;
+  countClickOnYesButton = 0;
+  maxCountClickOnYesButton = 5;
+
   minX = 0;
   maxX = 0;
   minY = 0;
   maxY = 0;
-  countClickOnYesButton = 0;
-  maxCountClickOnYesButton = 4;
 
   ngOnInit() {
+    this.getViewPortWidthHeight();
     this.getQuestionBoxWidthHeight();
     this.getButtonWidthHeight();
     this.getMinMaxTopLeft();
   }
 
-  getQuestionBoxWidthHeight() {
+  getViewPortWidthHeight(): void {
+    const element = document.querySelector('.main') as HTMLElement;
+
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      this.screenWidth = rect.width;
+      this.screenHeight = rect.height;
+    } else {
+      console.error('Element with class "main" not found.');
+    }
+  }
+
+  getQuestionBoxWidthHeight(): void {
     const element = document.querySelector('.question-card-frame') as HTMLElement;
 
     if (element) {
@@ -43,7 +76,7 @@ export class QuestionComponent {
     }
   }
 
-  getButtonWidthHeight() {
+  getButtonWidthHeight(): void {
     const element = document.querySelector('.no-button') as HTMLElement;
 
     if (element) {
@@ -52,9 +85,63 @@ export class QuestionComponent {
       this.noButtonHeight = rect.height;
       this.yesButtonWidth = rect.width;
       this.yesButtonHeight = rect.height;
+      this.yesInitalButtonWidth = rect.width;
+      this.yesInitialButtonHeight = rect.height;
     } else {
       console.error('Element with class "no-button" not found.');
     }
+  }
+
+  moveNoButton(): void {
+    if (this.countMouseOverNoButton < this.maxCountMouseOverNoButton) {
+      const element = document.querySelector('.no-button') as HTMLElement;
+
+      if (element) {
+        this.resetYesButton();
+        this.noButtonLeft = this.randomNumberInRange(this.minX, this.maxX);
+        this.noButtonTop = this.randomNumberInRange(this.minY, this.maxY);
+
+        this.addDynamicImages(3, this.angryImages, this.angryImageUrl);
+        this.countMouseOverNoButton++;
+      }
+
+    } else {
+      // aller a la page de fin 'Va faire un gros bisou à Batou, tu as été vilaine :('
+    }
+  }
+
+  resetNoButton(): void {
+    this.countMouseOverNoButton = 0;
+    this.noButtonLeft = 0;
+    this.noButtonTop = 0;
+    this.angryImages = [];
+  }
+
+  biggerYesButton(): void {
+    if (this.countClickOnYesButton < this.maxCountClickOnYesButton) {
+      const element = document.querySelector('.yes-button') as HTMLElement;
+
+      if (element) {
+        this.resetNoButton();
+        this.yesButtonWidth = this.yesButtonWidth * this.yesButtonBigRate;
+        this.yesButtonHeight = this.yesButtonHeight * this.yesButtonBigRate;
+        this.yesButtonFontSize = this.yesButtonFontSize * this.yesButtonBigRate;
+
+        this.addDynamicImages(4, this.loveImages, this.loveImageUrl);
+        this.countClickOnYesButton++;
+      }
+
+    } else {
+      // aller a la page de fin 'Va faire un gros bisou à Batou, tu l'as bien mérité petit Chorizo :)'
+    }
+  }
+
+  resetYesButton(): void {
+    this.countClickOnYesButton = 0;
+    this.yesButtonWidth = this.yesInitalButtonWidth;
+    this.yesButtonHeight = this.yesInitialButtonHeight;
+    this.yesButtonFontSize = this.yesInitialButtonFontSize;
+    this.loveImages = [];
   }
 
   getMinMaxTopLeft() {
@@ -64,28 +151,18 @@ export class QuestionComponent {
     this.maxY = (this.boxHeight / 2) - 5 - (2 * this.noButtonHeight);
   }
 
-  moveNoButton(): void {
-    const element = document.querySelector('.no-button') as HTMLElement;
+  randomNumberInRange(min: number, max: number): number {
+    return Math.random() * (max - min) + min;
+  }
 
-    if (element) {
-      this.noButtonLeft = Math.random() * (this.maxX - this.minX) + this.minX;
-      this.noButtonTop = Math.random() * (this.maxY - this.minY) + this.minY;
+  addDynamicImages(maxNumber: number, tab: string[], image: string): void {
+    for (let i: number = 0; i < maxNumber; i++) {
+      tab.push(image);
     }
   }
 
-  biggerYesButton(): void {
-    if (this.countClickOnYesButton < this.maxCountClickOnYesButton) {
-      const element = document.querySelector('.yes-button') as HTMLElement;
-
-      if (element) {
-        this.countClickOnYesButton++;
-        this.yesButtonWidth = this.yesButtonWidth * 1.5;
-        this.yesButtonHeight = this.yesButtonHeight * 1.5;
-        this.yesButtonFontSize = this.yesButtonFontSize * 1.5;
-      }
-    } else {
-      // aller a la page de fin
-    }
+  getRandomWidth(): number {
+    return Math.floor(Math.random() * (this.emojiMaxSize - this.emojiMinSize)) + this.emojiMinSize;
   }
 
 }

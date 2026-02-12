@@ -2,13 +2,16 @@
 <main class="main">
   <div class="content">
     <div class="question-panel">
-      <app-question-app></app-question-app>
+      <question-component></question-component>
     </div>
     <div class="meteo-panel">
-      <app-weather-app></app-weather-app>
+      <weather-app-component></weather-app-component>
     </div>
     <div class="credit-panel">
       <h1>Credits</h1>
+    </div>
+    <div *ngIf="isAfkPanelVisible" (click)="clickOnAfkCard()" class="afk-panel">
+      <afk-component></afk-component>
     </div>
   </div>
 </main>

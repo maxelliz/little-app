@@ -82,6 +82,7 @@ main {
   width: 12%;
   align-items: center;
   background-color: lightcoral;
+  z-index: 7;
 }
 
 .credit-panel {
@@ -94,6 +95,14 @@ main {
   justify-content: center;
   align-items: center;
   padding: 10px;
+}
+
+.afk-panel {
+  position: absolute;
+  top: 0px;
+  width: calc(100vw - 20px);
+  height: calc(100vh - 20px);
+  z-index: 10;
 }
 
 /* Styles for screens at least 1024px wide (desktops and up) */

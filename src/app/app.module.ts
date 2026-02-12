@@ -7,12 +7,14 @@ import {AppComponent} from './app.component';
 import {WeatherAppComponent} from './weather-app/weather-app.component';
 import {RouterModule} from '@angular/router';
 import {QuestionComponent} from './question/question.component';
+import {AfkComponent} from './afk/afk.component';
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [AppComponent,
     QuestionComponent,
-    WeatherAppComponent],
+    WeatherAppComponent,
+    AfkComponent],
   imports: [
     BrowserModule,
     CommonModule,

@@ -2,7 +2,7 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Component({
-  selector: 'app-weather-app',
+  selector: 'weather-app-component',
   templateUrl: './weather-app.component.html',
   styleUrls: ['./weather-app.component.css'],
   standalone: false

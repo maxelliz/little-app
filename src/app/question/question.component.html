@@ -1,7 +1,7 @@
 <div class="container">
   <div class="question-card-frame">
     <div class="question-card">
-      <h1>{{ question }}</h1>
+      <h1 class="question">{{ question }}</h1>
       <button [style.width.px]="yesButtonWidth" [style.height.px]="yesButtonHeight"
               [style.font-size.px]="yesButtonFontSize" class="yes-button"
               (click)="biggerYesButton()">Oui
@@ -10,6 +10,18 @@
               (mouseover)="moveNoButton()" (click)="moveNoButton()">
         Non
       </button>
+      <div *ngFor="let imageSrc of loveImages">
+        <img [src]="imageSrc" [style.width.px]="getRandomWidth()"
+             [style.left.px]="randomNumberInRange(0, this.screenWidth - this.emojiMaxSize)"
+             [style.top.px]="randomNumberInRange(0, this.screenHeight - this.emojiMaxSize)"
+             class="love-images">
+      </div>
+      <div *ngFor="let imageSrc of angryImages">
+        <img [src]="imageSrc" [style.width.px]="getRandomWidth()"
+             [style.left.px]="randomNumberInRange(0, this.screenWidth - this.emojiMaxSize)"
+             [style.top.px]="randomNumberInRange(0, this.screenHeight - this.emojiMaxSize)"
+             class="angry-images">
+      </div>
     </div>
   </div>
 </div>
