@@ -24,7 +24,6 @@ main {
 
 .question-panel {
   width: 88%;
-  background-color: lightblue;
 }
 
 .meteo-panel {
@@ -32,7 +31,6 @@ main {
   display: flex;
   width: 12%;
   align-items: center;
-  background-color: lightcoral;
   z-index: 7;
 }
 
@@ -58,7 +56,6 @@ main {
   .question-panel {
     width: 100%;
     height: 75%;
-    background-color: lightblue;
   }
 
   .meteo-panel {
@@ -66,7 +63,6 @@ main {
     top: 20px;
     right: 20px;
     width: 12%;
-    background-color: lightcoral;
   }
 
 }

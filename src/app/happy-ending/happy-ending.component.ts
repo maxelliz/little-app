@@ -7,5 +7,5 @@ import {Component} from '@angular/core';
   standalone: false
 })
 export class HappyEndingComponent {
-  protected readonly phrase1 = "'Va faire un gros bisou à Batou, tu l'as bien mérité petit Chorizo :)'";
+  protected readonly phrase1 = "Va faire un gros bisou à Batou, tu l'as bien mérité petit chorizo :)";
 }
