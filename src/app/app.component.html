@@ -1,19 +1,2 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<main class="main">
-  <div class="content">
-    <div class="question-panel">
-      <question-component></question-component>
-    </div>
-    <div class="meteo-panel">
-      <weather-app-component></weather-app-component>
-    </div>
-    <div class="credit-panel">
-      <h1>Credits</h1>
-    </div>
-    <div *ngIf="isAfkPanelVisible" (click)="clickOnAfkCard()" class="afk-panel">
-      <afk-component></afk-component>
-    </div>
-  </div>
-</main>
-
 <router-outlet/>

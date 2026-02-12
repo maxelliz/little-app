@@ -8,18 +8,26 @@ import {WeatherAppComponent} from './weather-app/weather-app.component';
 import {RouterModule} from '@angular/router';
 import {QuestionComponent} from './question/question.component';
 import {AfkComponent} from './afk/afk.component';
+import {BadEndingComponent} from './bad-ending/bad-ending.component';
+import {AppRoutes} from './app.routes';
+import {HomeComponent} from './home/home.component';
+import {HappyEndingComponent} from './happy-ending/happy-ending.component';
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [AppComponent,
     QuestionComponent,
     WeatherAppComponent,
-    AfkComponent],
+    AfkComponent,
+    BadEndingComponent,
+    HappyEndingComponent,
+    HomeComponent],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule,
-    RouterModule],
+    RouterModule,
+    AppRoutes],
   providers: [provideHttpClient(withInterceptorsFromDi())],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

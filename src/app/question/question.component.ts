@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'question-component',
@@ -44,6 +45,9 @@ export class QuestionComponent {
   maxX = 0;
   minY = 0;
   maxY = 0;
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
     this.getViewPortWidthHeight();
@@ -106,7 +110,7 @@ export class QuestionComponent {
       }
 
     } else {
-      // aller a la page de fin 'Va faire un gros bisou à Batou, tu as été vilaine :('
+      this.router.navigate(['/bad-ending']);
     }
   }
 
@@ -132,7 +136,7 @@ export class QuestionComponent {
       }
 
     } else {
-      // aller a la page de fin 'Va faire un gros bisou à Batou, tu l'as bien mérité petit Chorizo :)'
+      this.router.navigate(['/happy-ending']);
     }
   }
 

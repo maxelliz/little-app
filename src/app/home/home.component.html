@@ -1,0 +1,13 @@
+<main class="main">
+  <div class="content">
+    <div class="question-panel">
+      <question-component></question-component>
+    </div>
+    <div class="meteo-panel">
+      <weather-app-component></weather-app-component>
+    </div>
+    <div *ngIf="isAfkPanelVisible" (click)="clickOnAfkCard()" class="afk-panel">
+      <afk-component></afk-component>
+    </div>
+  </div>
+</main>
